@@ -2,6 +2,7 @@ import { cosmiconfigSync } from 'cosmiconfig';
 import Ajv from 'ajv';
 import chalk from 'chalk';
 import { schema } from './schema.js';
+import betterAjvErrors from 'better-ajv-errors'
 
 const configLoader = cosmiconfigSync('tool');
 const ajv = new Ajv({
@@ -19,7 +20,7 @@ export function getConfig() {
         const isValid = ajv.validate(schema, result.config);
         if (!isValid) {
             console.log(chalk.yellow('Invalid configuration was supplied'));
-            console.log(ajv.errors);
+            console.log(betterAjvErrors(schema, result.config, ajv.errors));
             process.exit(1);
         }
         console.log('Found configuration', result.config);
