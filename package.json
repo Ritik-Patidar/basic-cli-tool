@@ -14,5 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "arg": "^5.0.2"
-  }
+  },
+  "type": "module"
 }

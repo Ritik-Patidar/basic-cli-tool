@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-
-const arg = require('arg');
+import arg from 'arg';
 
 const args = arg({
   '--start': Boolean,
