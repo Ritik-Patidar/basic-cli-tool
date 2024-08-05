@@ -1,3 +1,10 @@
 #!/usr/bin/env node
 
-console.log(process.argv);
+const arg = require('arg');
+
+const args = arg({
+  '--start': Boolean,
+  '--build': Boolean,
+});
+
+console.log(args);
