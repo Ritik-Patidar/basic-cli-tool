@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-import arg from 'arg';
 import chalk from 'chalk';
+import arg from 'arg';
+import { getConfig } from '../src/config/config-mgr.js';
+import { start } from '../src/commands/start.js';
 
 try {
     const args = arg({
@@ -9,7 +11,8 @@ try {
     });
 
     if (args['--start']) {
-        console.log(chalk.bgCyanBright('starting the app'));
+        const config = getConfig();
+        start(config);
     }
 } catch (e) {
     console.log(chalk.yellow(e.message));
